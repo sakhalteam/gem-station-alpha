@@ -1,0 +1,10 @@
+node_modules
+dist
+*.local
+*.tsbuildinfo
+*.log
+env
+.env
+.env.*
+!.env.example
+.claude/
