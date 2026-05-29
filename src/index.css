@@ -279,12 +279,26 @@ input:focus {
 }
 
 .crystal {
+  background: transparent;
   border-left: 1.1rem solid transparent;
   border-right: 1.1rem solid transparent;
   border-bottom: 5rem solid #5df0dc;
+  border-radius: 0;
+  color: transparent;
   filter: drop-shadow(0 0 1rem rgba(93, 240, 220, 0.45));
+  height: 0;
+  padding: 0;
   position: absolute;
+  transition:
+    filter 0.2s,
+    transform 0.2s;
+  width: 0;
   z-index: 1;
+}
+
+.crystal:hover {
+  background: transparent;
+  filter: drop-shadow(0 0 1.35rem rgba(255, 226, 140, 0.75));
 }
 
 .cluster-a {
@@ -293,16 +307,28 @@ input:focus {
   transform: rotate(-12deg);
 }
 
+.cluster-a:hover {
+  transform: rotate(-12deg) translateY(-0.2rem);
+}
+
 .cluster-b {
   bottom: 12%;
   right: 21%;
   transform: rotate(9deg) scale(0.8);
 }
 
+.cluster-b:hover {
+  transform: rotate(9deg) scale(0.8) translateY(-0.2rem);
+}
+
 .cluster-c {
   bottom: 9%;
   left: 30%;
   transform: rotate(16deg) scale(0.55);
+}
+
+.cluster-c:hover {
+  transform: rotate(16deg) scale(0.55) translateY(-0.2rem);
 }
 
 .ground {
@@ -315,6 +341,56 @@ input:focus {
   left: -8%;
   position: absolute;
   right: -8%;
+}
+
+.discovery-card {
+  align-items: center;
+  background: rgba(14, 19, 31, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: auto minmax(0, 1fr);
+  justify-self: center;
+  margin: -8rem 0 1rem;
+  max-width: min(42rem, calc(100vw - 2rem));
+  padding: 1rem;
+  position: relative;
+  z-index: 3;
+}
+
+.discovery-card h2 {
+  color: #fff8cf;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  line-height: 1;
+  margin: 0.15rem 0 0.55rem;
+}
+
+.discovery-card p {
+  font-size: 0.98rem;
+  margin: 0.7rem 0 0;
+}
+
+dl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+dt {
+  color: #8fe5d6;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+dd {
+  color: #f8f4df;
+  font-weight: 800;
+  margin: 0;
 }
 
 .console {
@@ -330,6 +406,13 @@ input:focus {
 .console strong {
   display: block;
   font-size: 1.6rem;
+}
+
+.gem-sprite {
+  background-repeat: no-repeat;
+  display: inline-block;
+  flex: 0 0 auto;
+  image-rendering: auto;
 }
 
 ul {
@@ -349,10 +432,35 @@ li {
   padding: 0.35rem 0.65rem;
 }
 
+.survey-list li,
+.haul-list li {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.45rem;
+  min-height: 2.7rem;
+}
+
+.haul-list {
+  max-width: 32rem;
+}
+
+.haul-list span {
+  max-width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 @media (max-width: 760px) {
   .start-view {
     align-content: center;
     grid-template-columns: 1fr;
+  }
+
+  .discovery-card {
+    align-items: start;
+    grid-template-columns: 1fr;
+    margin-top: -6rem;
   }
 
   .console,
